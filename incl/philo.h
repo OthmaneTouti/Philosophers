@@ -6,7 +6,7 @@
 /*   By: ottouti <ottouti@student.42quebec.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 10:56:42 by ottouti           #+#    #+#             */
-/*   Updated: 2024/01/29 11:11:08 by ottouti          ###   ########.fr       */
+/*   Updated: 2024/01/29 12:29:32 by ottouti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,5 +61,8 @@ typedef	struct s_table
 	t_fork	*forks;
 	t_philo	*philos;
 }			t_table;
+
+t_table set_table(int argc, char **argv);
+int		ft_atoi(const char *str);
 
 #endif

@@ -6,7 +6,7 @@
 #    By: ottouti <ottouti@student.42quebec.com>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/29 10:50:47 by ottouti           #+#    #+#              #
-#    Updated: 2024/01/29 11:11:22 by ottouti          ###   ########.fr        #
+#    Updated: 2024/01/29 12:30:19 by ottouti          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,6 +21,7 @@ RM = rm -f
 MAIN = main.c
 MAIN_OBJ = main.o
 
+FILES = ft_atoi init
 SRCS_DIR = ./src/
 SRCS = $(addprefix $(SRCS_DIR), $(addsuffix .c, $(FILES)))
 
@@ -39,11 +40,9 @@ debug: re
 
 clean:
 	$(RM) $(OBJS)
-	$(MAKE) -C ./incl/ clean
 
 fclean: clean
 	$(RM) $(NAME)
-	$(MAKE) -C ./incl/ fclean
 
 re: fclean all
 
