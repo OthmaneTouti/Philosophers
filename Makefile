@@ -6,7 +6,7 @@
 #    By: ottouti <ottouti@student.42quebec.com>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/29 10:50:47 by ottouti           #+#    #+#              #
-#    Updated: 2024/01/29 12:30:19 by ottouti          ###   ########.fr        #
+#    Updated: 2024/01/29 13:25:11 by ottouti          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,7 @@ RM = rm -f
 MAIN = main.c
 MAIN_OBJ = main.o
 
-FILES = ft_atoi init
+FILES = ft_atoi init thread_utils thread_routines cleaning
 SRCS_DIR = ./src/
 SRCS = $(addprefix $(SRCS_DIR), $(addsuffix .c, $(FILES)))
 
