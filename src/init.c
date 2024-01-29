@@ -6,11 +6,34 @@
 /*   By: ottouti <ottouti@student.42quebec.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 12:23:08 by ottouti           #+#    #+#             */
-/*   Updated: 2024/01/29 13:02:56 by ottouti          ###   ########.fr       */
+/*   Updated: 2024/01/29 13:08:18 by ottouti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incl/philo.h"
+
+static t_philo	*sit_philos(t_table table)
+{
+	t_philo	*philos;
+	int		i;
+
+	i = 0;
+	philos = malloc(sizeof(t_philo) * table.philo_nbr);
+	if (!philos)
+		return (NULL);
+	while (i < table.philo_nbr)
+	{
+		philos[i].philo_id = i;
+		philos[i].meal_count = 0;
+		philos[i].full = false;
+		philos[i].last_meal_time = table.start_time;
+		philos[i].left_fork = &table.forks[i];
+		philos[i].right_fork = &table.forks[(i + 1) % table.philo_nbr];
+		philos[i].table = &table;
+		i++;
+	}
+	return (philos);
+}
 
 static t_fork	*place_forks(int philo_nbr)
 {
@@ -37,7 +60,7 @@ static long get_time(void)
 	return (time.tv_sec * 1000 + time.tv_usec / 1000);
 }
 
-t_table set_table(int argc, char **argv)
+static t_table set_table(int argc, char **argv)
 {
 	t_table	table;
 	
@@ -51,8 +74,15 @@ t_table set_table(int argc, char **argv)
 		table.meal_max = -1;
 	table.start_time = get_time();
 	table.end = false;
+	return (table);
+}
+
+t_table init_sim(int argc, char **argv)
+{
+	t_table table;
+
+	table = set_table(argc, argv);
 	table.forks = place_forks(table.philo_nbr);
-	if (!table.forks)
-		return (table);
+	table.philos = sit_philos(table);
 	return (table);
 }
