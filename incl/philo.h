@@ -6,7 +6,7 @@
 /*   By: ottouti <ottouti@student.42quebec.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 10:56:42 by ottouti           #+#    #+#             */
-/*   Updated: 2024/02/08 16:54:15 by ottouti          ###   ########.fr       */
+/*   Updated: 2024/02/08 17:27:28 by ottouti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,8 @@ typedef	struct s_table
 t_table prep_sim(int argc, char **argv);
 int		ft_atoi(const char *str);
 void	cleaning(t_table *table);
+void 	init_sim(t_table *table);
 long	get_time(void);
-void	eat(t_philo *philo);
+void	*eat(void *arg);
 
 #endif

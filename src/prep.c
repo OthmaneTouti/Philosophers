@@ -1,35 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init.c                                             :+:      :+:    :+:   */
+/*   prep.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ottouti <ottouti@student.42quebec.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 12:23:08 by ottouti           #+#    #+#             */
-/*   Updated: 2024/02/08 16:45:51 by ottouti          ###   ########.fr       */
+/*   Updated: 2024/02/08 17:27:32 by ottouti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incl/philo.h"
 
-static t_philo	*sit_philos(t_table table)
+static t_philo	*sit_philos(t_table *table)
 {
 	t_philo	*philos;
 	int		i;
 
 	i = 0;
-	philos = malloc(sizeof(t_philo) * table.philo_nbr);
+	philos = malloc(sizeof(t_philo) * table->philo_nbr);
 	if (!philos)
 		return (NULL);
-	while (i < table.philo_nbr)
+	while (i < table->philo_nbr)
 	{
 		philos[i].philo_id = i;
 		philos[i].meal_count = 0;
 		philos[i].full = false;
-		philos[i].last_meal_time = table.start_time;
-		philos[i].left_fork = &table.forks[i];
-		philos[i].right_fork = &table.forks[(i + 1) % table.philo_nbr];
-		philos[i].table = &table;
+		philos[i].last_meal_time = table->start_time;
+		philos[i].left_fork = &table->forks[i];
+		philos[i].right_fork = &table->forks[(i + 1) % table->philo_nbr];
+		philos[i].table = table;
 		i++;
 	}
 	return (philos);
@@ -83,6 +83,6 @@ t_table prep_sim(int argc, char **argv)
 
 	table = set_table(argc, argv);
 	table.forks = place_forks(table.philo_nbr);
-	table.philos = sit_philos(table);
+	table.philos = sit_philos(&table);
 	return (table);
 }

@@ -6,7 +6,7 @@
 /*   By: ottouti <ottouti@student.42quebec.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 10:56:12 by ottouti           #+#    #+#             */
-/*   Updated: 2024/02/08 16:45:44 by ottouti          ###   ########.fr       */
+/*   Updated: 2024/02/08 17:52:47 by ottouti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,11 +37,11 @@ int	main(int argc, char **argv)
 			"Full: %d\n"
 			"Last meal time: %ld\n"
 			"Left fork: %d\n"
-			"Right fork: %d\n", table.philos[i].philo_id, table.philos[i].meal_count,
+			"Right fork: %d\n", table.philos[i].philo_id + 1, table.philos[i].meal_count,
 			table.philos[i].full, table.philos[i].last_meal_time,
 			table.philos[i].left_fork->fork_id, table.philos[i].right_fork->fork_id);
 	}
-	start_simulation(&table);
+	init_sim(&table);
 	cleaning(&table);
 	return (0);
 }
