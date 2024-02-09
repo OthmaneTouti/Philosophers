@@ -6,7 +6,7 @@
 /*   By: ottouti <ottouti@student.42quebec.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 10:56:12 by ottouti           #+#    #+#             */
-/*   Updated: 2024/02/08 17:52:47 by ottouti          ###   ########.fr       */
+/*   Updated: 2024/02/09 13:19:07 by ottouti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	main(int argc, char **argv)
 {
-	t_table table;
+	t_table *table;
 	
 	if (argc < 5 || argc > 6)
 	{
@@ -22,26 +22,31 @@ int	main(int argc, char **argv)
 		return (1);
 	}
 	table = prep_sim(argc, argv);
+	if (!table)
+	{
+		printf("Error: Table not set\n");
+		return (1);
+	}
 	printf("Number of Philosophers: %ld\n"
 		"Time to die: %ld\n"
 		"Time to eat: %ld\n"
 		"Time to sleep: %ld\n"
 		"Max meals: %ld\n"
-		"Start time: %ld\n", table.philo_nbr, table.time_to_die,
-		table.time_to_eat, table.time_to_sleep, table.meal_max,
-		table.start_time);
-	for (int i = 0; i < table.philo_nbr; i++)
+		"Start time: %ld\n", table->philo_nbr, table->time_to_die,
+		table->time_to_eat, table->time_to_sleep, table->meal_max,
+		table->start_time);
+	for (int i = 0; i < table->philo_nbr; i++)
 	{
 		printf("Philosopher: %d\n"
 			"Meal count: %ld\n"
 			"Full: %d\n"
 			"Last meal time: %ld\n"
 			"Left fork: %d\n"
-			"Right fork: %d\n", table.philos[i].philo_id + 1, table.philos[i].meal_count,
-			table.philos[i].full, table.philos[i].last_meal_time,
-			table.philos[i].left_fork->fork_id, table.philos[i].right_fork->fork_id);
+			"Right fork: %d\n", table->philos[i].philo_id + 1, table->philos[i].meal_count,
+			table->philos[i].full, table->philos[i].last_meal_time,
+			table->philos[i].left_fork->fork_id, table->philos[i].right_fork->fork_id);
 	}
-	init_sim(&table);
-	cleaning(&table);
+	init_sim(table);
+	cleaning(table);
 	return (0);
 }

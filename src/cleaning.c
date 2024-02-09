@@ -6,7 +6,7 @@
 /*   By: ottouti <ottouti@student.42quebec.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 13:22:34 by ottouti           #+#    #+#             */
-/*   Updated: 2024/01/29 13:26:08 by ottouti          ###   ########.fr       */
+/*   Updated: 2024/02/09 13:19:36 by ottouti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,4 +27,6 @@ void cleaning(t_table *table)
 	printf("Forks freed\n");
 	free(table->philos);
 	printf("Philosophers freed\n");
+	free(table);
+	printf("Table freed\n");
 }
