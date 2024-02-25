@@ -6,11 +6,19 @@
 /*   By: ottouti <ottouti@student.42quebec.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 13:20:38 by ottouti           #+#    #+#             */
-/*   Updated: 2024/02/09 13:34:52 by ottouti          ###   ########.fr       */
+/*   Updated: 2024/02/25 14:49:32 by ottouti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incl/philo.h"
+
+long get_time(long start_time)
+{
+	struct timeval	time;
+
+	gettimeofday(&time, NULL);
+	return ((time.tv_sec * 1000 + time.tv_usec / 1000) - start_time);
+}
 
 void check_if_full(t_philo *philo)
 {

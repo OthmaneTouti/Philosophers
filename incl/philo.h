@@ -6,7 +6,7 @@
 /*   By: ottouti <ottouti@student.42quebec.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 10:56:42 by ottouti           #+#    #+#             */
-/*   Updated: 2024/02/09 13:38:06 by ottouti          ###   ########.fr       */
+/*   Updated: 2024/02/25 14:51:09 by ottouti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ int		check_if_all_full(t_table *table);
 void	cleaning(t_table *table);
 void 	init_sim(t_table *table);
 void	check_if_full(t_philo *philo);
-long	get_time(void);
+long	get_time(long srart_time);
 void	*eat(void *arg);
 
 #endif

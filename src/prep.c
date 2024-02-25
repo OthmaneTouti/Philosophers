@@ -6,7 +6,7 @@
 /*   By: ottouti <ottouti@student.42quebec.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 12:23:08 by ottouti           #+#    #+#             */
-/*   Updated: 2024/02/09 13:17:43 by ottouti          ###   ########.fr       */
+/*   Updated: 2024/02/25 14:52:14 by ottouti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,13 +52,7 @@ static t_fork	*place_forks(int philo_nbr)
 	}
 	return (forks);
 }
-long get_time(void)
-{
-	struct timeval	time;
 
-	gettimeofday(&time, NULL);
-	return (time.tv_sec * 1000 + time.tv_usec / 1000);
-}
 
 static t_table *set_table(int argc, char **argv)
 {
@@ -75,7 +69,7 @@ static t_table *set_table(int argc, char **argv)
 		table->meal_max = ft_atoi(argv[5]);
 	else
 		table->meal_max = -1;
-	table->start_time = get_time();
+	table->start_time = get_time(0);
 	table->end = false;
 	return (table);
 }
